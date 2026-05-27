@@ -1,0 +1,8 @@
+format: yamanifest
+version: 1.0
+---
+work/mom6-solo:
+  fullpath: /g/data/vk83/prerelease/apps/spack/1.1/release/linux-x86_64_v4/access-mom6-git.4040064032f357e7af28873b1342fa16154dd48d_2026.01.001-d5g2p722od7hplb5nm7dl52xae2zp2fv/bin/mom6-solo
+  hashes:
+    binhash: 838ee76b342665019a8c5753ac892e95
+    md5: dcf665c6b3efa4b586fb34fc177a9cc9

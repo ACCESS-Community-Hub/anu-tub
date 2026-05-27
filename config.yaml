@@ -1,23 +1,40 @@
+# Payu configuration
+
+# If submitting to a different project to your default, uncomment line below
+# and change project code as appropriate; also set shortpath below
+# project: <project>
+# Force payu to always find, and save, files in this scratch project directory
+# shortpath: /scratch/<project>
+
+modules:
+  use:
+    - /g/data/vk83/prerelease/modules
+  load:
+    - access-om3/pr140-7
+
+queue: normal
 ncpus: 240
 walltime: 12:00:00
 jobname: anu-tub
-project: ol01
-queue: normal
 
 model: mom6
-exe: /g/data/x77/ahg157/exes/MOM6/AG-07f0a144
-input: input
+exe: mom6-solo
+input:
+  # Inputs can be created using the notebook in ./input
+  - ./input/topog.nc
+  - ./input/forcing.nc
+  - ./input/sst.nc
 
-storage:
-  gdata:
-    - ol01
-    - x77
+runlog: false
+metadata:
+  enable: false
+manifest:
+  reproduce:
+    exe: true
 
-collate: False
-
-mpi:
-    module: openmpi/4.1.2
+collate: false
 
 qsub_flags: -W umask=027
-restart_freq: 1  # use tidy_restarts.py instead
+
+restart_freq: 1
 
