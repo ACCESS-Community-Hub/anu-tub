@@ -1,1 +1,21 @@
-experiment_uuid: 38acb132-5097-40b2-a356-447d96d65ba9
+experiment_uuid: cb2a72cd-ed1c-4a77-895b-27aef392b76b
+parent_experiment: 38acb132-5097-40b2-a356-447d96d65ba9
+created: '2026-05-30'
+name: anu-tub-adapt-anu-tub-adapt-n8-cb2a72cd
+model: MOM6
+url: /home/157/amh157/mom6/./anu-tub
+email: Andy.Hogg@anu.edu.au
+schema_version: 1-0-3
+description: __REPLACE_ME__  # Short description of the experiment (string, < 150 char)
+long_description: __REPLACE_ME__ # Long description of the experiment (string)
+# realm: The realm(s) included in the experiment (array of strings)
+# frequency: The frequency(/ies) included in the experiment (array of strings)
+# variable: The variable(s) included in the experiment (array of strings)
+# nominal_resolution: The nominal resolution(s) of model(s) used in the experiment (string or array of strings), e.g. 10km
+# version: The version of the experiment (number, string)
+# contact: Contact name for the experiment (string)
+# reference: Citation or reference information (string)
+# license: License of the experiment (string, SPDX preferred)
+# related_experiments: experiment_uuids for any related experiment(s) (array of strings)
+# notes: Additional notes (string)
+# keywords: Keyword(s) associated with experiment (array of strings)
