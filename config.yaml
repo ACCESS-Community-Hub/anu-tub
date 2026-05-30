@@ -8,14 +8,14 @@
 
 modules:
   use:
-    - /g/data/vk83/prerelease/modules
+  - /g/data/vk83/prerelease/modules
   load:
-    - access-om3/pr140-7
+  - access-om3/pr140-7
 
 queue: normalsr
 ncpus: 312
 walltime: 3:00:00
-jobname: tub-n8
+jobname: tub-ag-n8
 project: tm70
 shortpath: /scratch/ol01
 
@@ -23,9 +23,9 @@ model: mom6
 exe: mom6-solo
 input:
   # Inputs can be created using the notebook in ./input
-  - ./input/topog.nc
-  - ./input/forcing.nc
-  - ./input/sst.nc
+- ./input/topog.nc
+- ./input/forcing.nc
+- ./input/sst.nc
 
 runlog: true
 metadata:
@@ -40,3 +40,4 @@ qsub_flags: -W umask=027
 
 restart_freq: 1
 
+restart: /scratch/ol01/amh157/mom6/archive/anu-tub/restart461
