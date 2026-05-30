@@ -1,3 +1,18 @@
 format: yamanifest
 version: 1.0
---- {}
+---
+work/INPUT/forcing.nc:
+  fullpath: /home/157/amh157/mom6/anu-tub/input/forcing.nc
+  hashes:
+    binhash: b0085b11ffd760201155211bba13c6b1
+    md5: aa75509526935276ef3f5346b3ad15b8
+work/INPUT/sst.nc:
+  fullpath: /home/157/amh157/mom6/anu-tub/input/sst.nc
+  hashes:
+    binhash: 04f4b70000036e69e74054f501525b73
+    md5: 3bb095f47357de92d5a8e743e3e1a1f4
+work/INPUT/topog.nc:
+  fullpath: /home/157/amh157/mom6/anu-tub/input/topog.nc
+  hashes:
+    binhash: 06c2106d22d83ce87e7c31978a2a2583
+    md5: 53582824d67e2420f52498cfdff1d593

@@ -14,8 +14,10 @@ modules:
 
 queue: normalsr
 ncpus: 312
-walltime: 12:00:00
-jobname: anu-tub
+walltime: 3:00:00
+jobname: tub-n8
+project: tm70
+shortpath: /scratch/ol01
 
 model: mom6
 exe: mom6-solo
@@ -25,9 +27,9 @@ input:
   - ./input/forcing.nc
   - ./input/sst.nc
 
-runlog: false
+runlog: true
 metadata:
-  enable: false
+  enable: true
 manifest:
   reproduce:
     exe: true
