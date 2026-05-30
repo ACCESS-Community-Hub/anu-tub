@@ -150,7 +150,7 @@ LIGHTEST_DENSITY = 1022.0       !   [kg m-3] default = 1035.0
                                 ! The reference potential density used for the surface interface.
 DENSITY_RANGE = 6.0             !   [kg m-3] default = 2.0
                                 ! The range of reference potential densities across all interfaces.
-REGRIDDING_COORDINATE_MODE = "ZSTAR" ! default = "LAYER"
+REGRIDDING_COORDINATE_MODE = "ADAPTIVE" ! default = "LAYER"
                                 ! Coordinate mode for vertical regridding. Choose among the following
                                 ! possibilities:  LAYER - Isopycnal or stacked shallow water layers
                                 !  ZSTAR, Z* - stretched geopotential z*
@@ -160,6 +160,10 @@ REGRIDDING_COORDINATE_MODE = "ZSTAR" ! default = "LAYER"
                                 !  HYCOM1 - HyCOM-like hybrid coordinate
                                 !  HYBGEN - Hybrid coordinate from the Hycom hybgen code
                                 !  ADAPTIVE - optimize for smooth neutral density surfaces
+BOUNDARY_EXTRAPOLATION = True   !   [Boolean] default = False
+                                ! When defined, a proper high-order reconstruction scheme is used within
+                                ! boundary cells rather than PCM. E.g., if PPM is used for remapping, a PPM
+                                ! reconstruction will also be used within boundary cells.
 ALE_COORDINATE_CONFIG = "FNC1:2,4000,4.5,.01" ! default = "UNIFORM"
                                 ! Determines how to specify the coordinate resolution. Valid options are:
                                 !  PARAM       - use the vector-parameter ALE_RESOLUTION
@@ -197,8 +201,43 @@ ALE_COORDINATE_CONFIG = "FNC1:2,4000,4.5,.01" ! default = "UNIFORM"
                                 ! in z-coordinate mode, the parameter is a list of level
                                 ! thicknesses (in m). In sigma-coordinate mode, the list
                                 ! is of non-dimensional fractions of the water column.
+REGRID_COMPRESSIBILITY_FRACTION = 0.01 !   [nondim] default = 0.0
+                                ! When interpolating potential density profiles we can add some artificial
+                                ! compressibility solely to make homogeneous regions appear stratified.
 MIN_THICKNESS = 1.0E-06         !   [m] default = 0.001
                                 ! When regridding, this is the minimum layer thickness allowed.
+ADAPT_TIMESCALE = 3600.0        !   [s] default = 8.64E+04
+                                ! Timescale for adaptivity diffusivity (defaults to a day)
+ADAPT_SLOPE_CUTOFF = 0.0035     !   [nondim] default = 0.01
+                                ! Slope cutoff between stratified and unstratified regions
+ADAPT_SMOOTH_MIN = 0.1          !   [nondim] default = 0.0
+                                ! Minimum weight toward smoothing term
+ADAPT_ADJUSTMENT_SCALE = 0.1    !   [nondim] default = 1.0
+                                ! Non-dimensional scale for adjusting interface positions when
+                                ! a diagonal convective instability would occur. When set to 1,
+                                ! perform the full adjustment permitted by the local CFL value.
+MAXIMUM_INT_DEPTH_CONFIG = "FNC1:5,8000.0,1.0,.01" ! default = "NONE"
+                                ! Determines how to specify the maximum interface depths.
+                                ! Valid options are:
+                                !  NONE        - there are no maximum interface depths
+                                !  PARAM       - use the vector-parameter MAXIMUM_INTERFACE_DEPTHS
+                                !  FILE:string - read from a file. The string specifies
+                                !                the filename and variable name, separated
+                                !                by a comma or space, e.g. FILE:lev.nc,Z
+                                !  FNC1:string - FNC1:dz_min,H_total,power,precision
+!MAXIMUM_INT_DEPTHS = 0.0, 5.0, 12.75, 23.25, 36.49, 52.480000000000004, 71.22, 92.71000000000001, 116.94000000000001, 143.92000000000002, 173.65, 206.13, 241.36, 279.33000000000004, 320.05000000000007, 363.5200000000001, 409.7400000000001, 458.7000000000001, 510.4100000000001, 564.8700000000001, 622.0800000000002, 682.0300000000002, 744.7300000000002, 810.1800000000003, 878.3800000000003, 949.3300000000004, 1023.0200000000004, 1099.4600000000005, 1178.6500000000005, 1260.5900000000006, 1345.2700000000007, 1432.7000000000007, 1522.8800000000008, 1615.8100000000009, 1711.490000000001, 1809.910000000001, 1911.080000000001, 2015.0000000000011, 2121.670000000001, 2231.080000000001, 2343.2400000000007, 2458.1500000000005, 2575.8100000000004, 2696.2200000000003, 2819.3700000000003, 2945.2700000000004, 3073.9200000000005, 3205.3200000000006, 3339.4600000000005, 3476.3500000000004, 3615.9900000000002, 3758.38, 3903.52, 4051.4, 4202.03, 4355.41, 4511.54, 4670.41, 4832.03, 4996.4, 5163.5199999999995, 5333.379999999999, 5505.989999999999, 5681.3499999999985, 5859.459999999998, 6040.319999999998, 6223.919999999998, 6410.269999999999, 6599.369999999999, 6791.219999999999, 6985.8099999999995, 7183.15, 7383.24, 7586.08, 7791.67, 8000.0
+                                ! The list of maximum depths for each interface.
+MAX_LAYER_THICKNESS_CONFIG = "FNC1:400,31000.0,0.1,.01" ! default = "NONE"
+                                ! Determines how to specify the maximum layer thicknesses.
+                                ! Valid options are:
+                                !  NONE        - there are no maximum layer thicknesses
+                                !  PARAM       - use the vector-parameter MAX_LAYER_THICKNESS
+                                !  FILE:string - read from a file. The string specifies
+                                !                the filename and variable name, separated
+                                !                by a comma or space, e.g. FILE:lev.nc,Z
+                                !  FNC1:string - FNC1:dz_min,H_total,power,precision
+!MAX_LAYER_THICKNESS = 400.0, 409.63, 410.32, 410.75, 411.07, 411.32, 411.52, 411.7, 411.86, 412.0, 412.13, 412.24, 412.35, 412.45, 412.54, 412.63, 412.71, 412.79, 412.86, 412.93, 413.0, 413.06, 413.12, 413.18, 413.24, 413.29, 413.34, 413.39, 413.44, 413.49, 413.54, 413.58, 413.62, 413.67, 413.71, 413.75, 413.78, 413.82, 413.86, 413.9, 413.93, 413.97, 414.0, 414.03, 414.06, 414.1, 414.13, 414.16, 414.19, 414.22, 414.24, 414.27, 414.3, 414.33, 414.35, 414.38, 414.41, 414.43, 414.46, 414.48, 414.51, 414.53, 414.55, 414.58, 414.6, 414.62, 414.65, 414.67, 414.69, 414.71, 414.73, 414.75, 414.77, 414.79, 414.83 !   [m]
+                                ! The list of maximum thickness for each layer.
 REMAPPING_SCHEME = "PPM_H4"     ! default = "PLM"
                                 ! This sets the reconstruction scheme used for vertical remapping for all
                                 ! variables. It can be one of the following schemes:
@@ -211,67 +250,20 @@ REMAPPING_SCHEME = "PPM_H4"     ! default = "PLM"
                                 ! WENO_HYBGEN (3rd-order accurate)
                                 ! PQM_IH4IH3  (4th-order accurate)
                                 ! PQM_IH6IH5  (5th-order accurate)
+REGRID_TIME_SCALE = 8.64E+04    !   [s] default = 0.0
+                                ! The time-scale used in blending between the current (old) grid and the target
+                                ! (new) grid. A short time-scale favors the target grid (0. or anything less
+                                ! than DT_THERM) has no memory of the old grid. A very long time-scale makes the
+                                ! model more Lagrangian.
+REGRID_FILTER_SHALLOW_DEPTH = 20.0 !   [m] default = 0.0
+                                ! The depth above which no time-filtering is applied. Above this depth final
+                                ! grid exactly matches the target (new) grid.
+REGRID_FILTER_DEEP_DEPTH = 100.0 !   [m] default = 0.0
+                                ! The depth below which full time-filtering is applied with time-scale
+                                ! REGRID_TIME_SCALE. Between depths REGRID_FILTER_SHALLOW_DEPTH and
+                                ! REGRID_FILTER_SHALLOW_DEPTH the filter weights adopt a cubic profile.
 
 ! === module MOM_state_initialization ===
-THICKNESS_CONFIG = "coord"      ! default = "uniform"
-                                ! A string that determines how the initial layer thicknesses are specified for a
-                                ! new run:
-                                !     file - read interface heights from the file specified
-                                !       by (THICKNESS_FILE).
-                                !     thickness_file - read thicknesses from the file specified
-                                !       by (THICKNESS_FILE).
-                                !     mass_file - read thicknesses in units of mass per unit area from the file
-                                !       specified by (THICKNESS_FILE).
-                                !     coord - determined by ALE coordinate.
-                                !     uniform - uniform thickness layers evenly distributed
-                                !       between the surface and MAXIMUM_DEPTH.
-                                !     list - read a list of positive interface depths.
-                                !     param - use thicknesses from parameter THICKNESS_INIT_VALUES.
-                                !     DOME - use a slope and channel configuration for the
-                                !       DOME sill-overflow test case.
-                                !     ISOMIP - use a configuration for the
-                                !       ISOMIP test case.
-                                !     benchmark - use the benchmark test case thicknesses.
-                                !     Neverworld - use the Neverworld test case thicknesses.
-                                !     search - search a density profile for the interface
-                                !       densities. This is not yet implemented.
-                                !     circle_obcs - the circle_obcs test case is used.
-                                !     DOME2D - 2D version of DOME initialization.
-                                !     adjustment2d - 2D lock exchange thickness ICs.
-                                !     sloshing - sloshing gravity thickness ICs.
-                                !     seamount - no motion test with seamount ICs.
-                                !     dumbbell - sloshing channel ICs.
-                                !     soliton - Equatorial Rossby soliton.
-                                !     rossby_front - a mixed layer front in thermal wind balance.
-                                !     USER - call a user modified routine.
-TS_CONFIG = "linear"            !
-                                ! A string that determines how the initial temperatures and salinities are
-                                ! specified for a new run:
-                                !     file - read velocities from the file specified
-                                !       by (TS_FILE).
-                                !     fit - find the temperatures that are consistent with
-                                !       the layer densities and salinity S_REF.
-                                !     TS_profile - use temperature and salinity profiles
-                                !       (read from TS_FILE) to set layer densities.
-                                !     benchmark - use the benchmark test case T & S.
-                                !     linear - linear in logical layer space.
-                                !     DOME2D - 2D DOME initialization.
-                                !     ISOMIP - ISOMIP initialization.
-                                !     adjustment2d - 2d lock exchange T/S ICs.
-                                !     sloshing - sloshing mode T/S ICs.
-                                !     seamount - no motion test with seamount ICs.
-                                !     dumbbell - sloshing channel ICs.
-                                !     rossby_front - a mixed layer front in thermal wind balance.
-                                !     SCM_CVMix_tests - used in the SCM CVMix tests.
-                                !     USER - call a user modified routine.
-T_TOP = 10.0                    !   [degC]
-                                ! Initial temperature of the top surface.
-T_RANGE = 5.0                   !   [degC]
-                                ! Initial temperature difference (top-bottom).
-S_TOP = 35.0                    !   [ppt]
-                                ! Initial salinity of the top surface.
-S_RANGE = 0.0                   !   [ppt]
-                                ! Initial salinity difference (top-bottom).
 
 ! === module MOM_diag_mediator ===
 NUM_DIAG_COORDS = 2             ! default = 1
@@ -671,7 +663,7 @@ FLUXCONST_S = 0.0               !   [m day-1] default = 0.2
 ! === module MOM_restart ===
 
 ! === module MOM_main (MOM_driver) ===
-DAYMAX = 31.0                   !   [days]
+DAYMAX = 4.01775E+05            !   [days]
                                 ! The final time of the whole simulation, in units of TIMEUNIT seconds.  This
                                 ! also sets the potential end time of the present run segment if the end time is
                                 ! not set via ocean_solo_nml in input.nml.
