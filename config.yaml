@@ -18,7 +18,11 @@ walltime: 3:00:00
 jobname: tub-n8
 project: tm70
 shortpath: /scratch/ol01
-
+storage:
+  gdata:
+    - ol01
+    - x77
+    
 model: mom6
 exe: mom6-solo
 input:
@@ -36,7 +40,14 @@ manifest:
 
 collate: false
 
+sync:
+  enable: true
+  path:
+    /g/data/x77/amh157/anu-tub/outputs/anu-tub-zstar-n8
+  restart: false
+  remove_local_dirs: true
+
 qsub_flags: -W umask=027
 
-restart_freq: 1
+restart_freq: 5
 
