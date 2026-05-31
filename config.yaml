@@ -34,10 +34,21 @@ manifest:
   reproduce:
     exe: true
 
+storage:
+  gdata:
+    - ol01
+    - x77
+
+sync:
+  enable: true
+  path: /g/data/x77/amh157/anu-tub/outputs/anu-tub-adapt-n8
+  restart: false
+  remove_local_dirs: true
+
 collate: false
 
 qsub_flags: -W umask=027
 
-restart_freq: 1
+restart_freq: 5
 
 restart: /scratch/ol01/amh157/mom6/archive/anu-tub/restart461
