@@ -2,12 +2,12 @@ format: yamanifest
 version: 1.0
 ---
 work/INPUT/MOM.res.nc:
-  fullpath: /scratch/ol01/amh157/mom6/archive/anu-tub-adapt-anu-tub-adapt-n8-cb2a72cd/restart088/MOM.res.nc
+  fullpath: /scratch/ol01/amh157/mom6/archive/anu-tub-adapt-anu-tub-adapt-n8-cb2a72cd/restart089/MOM.res.nc
   hashes:
-    binhash: ea9e0255a8caf1f61fbd09b3c75846d4
-    md5: e3608a03be1b050813579d21ca19d18d
+    binhash: 7a1157f56e98242f5d010a48b32b1b51
+    md5: d28e1e18d95dd638a1b6f065ef5ad964
 work/INPUT/ocean_solo.res:
-  fullpath: /scratch/ol01/amh157/mom6/archive/anu-tub-adapt-anu-tub-adapt-n8-cb2a72cd/restart088/ocean_solo.res
+  fullpath: /scratch/ol01/amh157/mom6/archive/anu-tub-adapt-anu-tub-adapt-n8-cb2a72cd/restart089/ocean_solo.res
   hashes:
-    binhash: adf12a631320f3380b3cfe947e7ae903
-    md5: 934323064dd98d90e2c5673d8f3dbd51
+    binhash: 6d049b69da1672226cd24b7c2dd28090
+    md5: 14312fbd625130ed0df09447d8c9a05f
