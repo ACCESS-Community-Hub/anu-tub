@@ -1,0 +1,48 @@
+cff-version: 1.2.0
+title: 'ANU-tub MOM6 configuration'
+message: >-
+  If you use this software, please cite it using the metadata from this file.
+type: software
+authors:
+  - given-names: Andrew McC
+    family-names: Hogg
+    email: Andy.Hogg@anu.edu.au
+    affiliation: Australia's Climate Simulator (ACCESS-NRI), Australian National University, Canberra, Australia
+    orcid: 'https://orcid.org/0000-0001-5898-7635'
+  - given-names: Angus
+    family-names: Gibson
+    email: Angus.Gibson@anu.edu.au
+    affiliation: Australian National University, Canberra, Australia
+    orcid: 'https://orcid.org/0000-0001-7577-3604'
+  - given-names: Dougal T
+    family-names: Squire
+    email: Dougie.Squire@anu.edu.au
+    affiliation:  Australia's Climate Simulator (ACCESS-NRI), Australian National University, Canberra, Australia
+    orcid: 'https://orcid.org/0000-0003-3271-6874'
+  - given-names: Christopher Yit Sen 
+    family-names: Bull
+    email: chris.bull@anu.edu.au
+    affiliation: Australia's Climate Simulator (ACCESS-NRI), Australian National University, Canberra, Australia
+    orcid: 'https://orcid.org/0000-0001-8362-3446'
+  - given-names: Josef I
+    family-names: Bisits
+    email: j.bisits@unsw.edu.au
+    affiliation:  University of New South Wales, Sydney, New South Wales, Australia
+    orcid: 'https://orcid.org/0000-0002-6340-4470'
+repository-code: 'https://github.com/ACCESS-Community-Hub/anu-tub'
+url: 'https://github.com/ACCESS-Community-Hub/anu-tub'
+repository-artifact: >-
+abstract: >-
+  A bathtub-sector ocean configuration for MOM6. This configuration is designed
+  primarily as a test case for implementing new vertical coordinate systems into
+  MOM6, and to compare with existing vertical coordinate. Thus, the design criteria
+  is to produce the simplest configuration that incorporates buoyancy and wind
+  forcing, gyre circulation, overturning circulation and topographically-constrained
+  overflows.
+license: Apache License 2.0
+version: 
+date-released: 
+keywords:
+  - MOM6
+  - idealized
+  - configuration
